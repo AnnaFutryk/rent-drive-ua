@@ -11,7 +11,21 @@ export const carsApi = createApi({
       query: () => `/advert`,
       providesTags: ["Advert"],
     }),
+    getCarById: builder.query({
+      //використати в модалці
+      query: (id) => `/advert/${id}`,
+      providesTags: ["Advert"],
+    }),
+    deleteCar: builder.mutation({
+      //використати в картці
+      query: (id) => ({
+        url: `/advert/${id}`,
+        method: "DELETE",
+      }),
+      invalidatesTags: ["Advert"],
+    }),
   }),
 });
 
-export const { useGetCarsQuery } = carsApi;
+export const { useGetCarsQuery, useDeleteCarMutation, useGetCarByIdQuery } =
+  carsApi;
