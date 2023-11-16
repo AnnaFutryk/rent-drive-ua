@@ -1,7 +1,8 @@
 // import { ToastContainer, toast, Slide } from 'react-toastify';
 // import 'react-toastify/dist/ReactToastify.css';
 // import Loader from 'components/Loader/Loader';
-
+import BgVideo from "../../video/IMG_1236.MP4";
+import { OverLay, Text, VideoBg } from "./HomePage.styled";
 // import { useLocation } from "react-router-dom";
 
 const HomePage = () => {
@@ -10,7 +11,13 @@ const HomePage = () => {
 
   return (
     <>
-      <p>Hello! It is HomePage</p>
+      <OverLay>
+        <VideoBg src={BgVideo} autoPlay muted loop />
+      </OverLay>
+      <Text>
+        Where every journey is your story, and we provide you with the keys to
+        the best adventures!
+      </Text>
     </>
   );
 };
