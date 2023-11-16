@@ -1,15 +1,24 @@
 import { useGetCarsQuery } from "../../redux/carsSlice";
+import Loader from "../../components/Loader/Loader";
 
 const Catalog = () => {
-  const { data, error, isLoading } = useGetCarsQuery();
-
-  console.log("data:", data);
-  console.log("error", error);
-  console.log("isLoading", isLoading);
+  const { data: cars, error, isLoading } = useGetCarsQuery();
 
   return (
     <>
-      <p>Hello! It is Catalog</p>
+      {error && <p>Ooops... something went wrong</p>}
+      {isLoading ? (
+        <Loader />
+      ) : (
+        <ul>
+          {cars.map((car) => (
+            <li key={car.id}>
+              <img src={car.img} alt="Car" width={250} />
+              <p>{car.model}</p>
+            </li>
+          ))}
+        </ul>
+      )}
     </>
   );
 };
