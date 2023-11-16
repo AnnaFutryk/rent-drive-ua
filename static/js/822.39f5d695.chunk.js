@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkrent_drive_ua=self.webpackChunkrent_drive_ua||[]).push([[822],{822:(e,r,o)=>{o.r(r),o.d(r,{default:()=>s});var a=o(391),n=o(184);const s=()=>{const{data:e,error:r,isLoading:o}=(0,a.JB)();return console.log("data:",e),console.log("error",r),console.log("isLoading",o),(0,n.jsx)(n.Fragment,{children:(0,n.jsx)("p",{children:"Hello! It is Catalog"})})}}}]);
+//# sourceMappingURL=822.39f5d695.chunk.js.map
