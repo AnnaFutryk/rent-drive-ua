@@ -1,2 +1,0 @@
-"use strict";(self.webpackChunkrent_drive_ua=self.webpackChunkrent_drive_ua||[]).push([[680],{680:(e,r,s)=>{s.r(r),s.d(r,{default:()=>n});var a=s(184);const n=()=>(0,a.jsx)(a.Fragment,{children:(0,a.jsx)("p",{children:"Hello! It is HomePage"})})}}]);
-//# sourceMappingURL=680.7d167877.chunk.js.map
