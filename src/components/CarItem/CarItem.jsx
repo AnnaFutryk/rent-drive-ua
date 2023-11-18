@@ -1,4 +1,6 @@
+import { useState } from "react";
 import Button from "../Button/Button";
+import Modal from "../Modal/Modal";
 import {
   Img,
   ImgBlock,
@@ -11,6 +13,10 @@ import {
 } from "./CarItem.styled";
 
 const CarItem = ({ cars }) => {
+  const [open, setOpen] = useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
+
   return (
     <Wrapper>
       <ImgBlock>
@@ -32,8 +38,8 @@ const CarItem = ({ cars }) => {
         <InfoItem>{cars.mileage}</InfoItem>
         <InfoItem>{cars.accessories[0]}</InfoItem>
       </InfoList>
-      <Button text="Learn more" />
-      {/* модалка */}
+      <Button onClick={handleOpen} text="Learn more" />
+      {open && <Modal onClose={handleClose} cars={cars} />}
     </Wrapper>
   );
 };
