@@ -2,6 +2,8 @@ import { useGetCarsQuery } from "../../redux/carsSlice";
 import Loader from "../../components/Loader/Loader";
 import { useState } from "react";
 import LoadMoreBtn from "../../components/Button/LoadMoreBtn";
+import { CarsList } from "./Catalog.styled";
+import CarItem from "../../components/CarItem/CarItem";
 
 const Catalog = () => {
   const [page, setPage] = useState(1);
@@ -25,14 +27,11 @@ const Catalog = () => {
         <Loader />
       ) : (
         <div>
-          <ul>
+          <CarsList>
             {cars.map((car) => (
-              <li key={car.id}>
-                <img src={car.img} alt="Car" width={250} />
-                <p>{car.model}</p>
-              </li>
+              <CarItem key={car.id} cars={car} />
             ))}
-          </ul>
+          </CarsList>
           {isFetching && <Loader />}
           {hasMoreCars && !isLastPage && (
             <LoadMoreBtn
