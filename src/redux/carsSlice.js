@@ -11,21 +11,14 @@ export const carsApi = createApi({
       query: (page = 1, limit = 12) => `/advert?page=${page}&limit=${limit}`,
       providesTags: ["Advert"],
     }),
-    getCarById: builder.query({
-      //використати в модалці
-      query: (id) => `/advert/${id}`,
-      providesTags: ["Advert"],
-    }),
-    deleteCar: builder.mutation({
-      //використати в картці
-      query: (id) => ({
-        url: `/advert/${id}`,
-        method: "DELETE",
+    toggleFavorite: builder.mutation({
+      query: ({ id, isFavorite }) => ({
+        url: `/favorites/${id}`, // Adjust the endpoint based on your API
+        method: isFavorite ? "DELETE" : "POST",
       }),
       invalidatesTags: ["Advert"],
     }),
   }),
 });
 
-export const { useGetCarsQuery, useDeleteCarMutation, useGetCarByIdQuery } =
-  carsApi;
+export const { useGetCarsQuery, useToggleFavoriteMutation } = carsApi;
