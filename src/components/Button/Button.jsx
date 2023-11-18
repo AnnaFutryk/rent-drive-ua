@@ -1,15 +1,9 @@
 import { Btn } from "./ButtonStyled";
 
-const Button = ({ onClick, text, width, textColor, bgcolor }) => {
+const Button = ({ onClick, text, width, height }) => {
   return (
     <>
-      <Btn
-        type="button"
-        onClick={onClick}
-        width={width}
-        textColor={textColor}
-        bgcolor={bgcolor}
-      >
+      <Btn type="button" onClick={onClick} width={width} height={height}>
         {text}
       </Btn>
     </>
