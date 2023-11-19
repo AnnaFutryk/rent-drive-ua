@@ -34,10 +34,8 @@ const Favorites = () => {
             </Text>
           )}
         </FavoritesList>
-        {hasMoreCars && (
-          <LoadMoreBtn onClick={handleLoadMore} text="Load more" />
-        )}
       </Wrapper>
+      {hasMoreCars && <LoadMoreBtn onClick={handleLoadMore} text="Load more" />}
     </>
   );
 };

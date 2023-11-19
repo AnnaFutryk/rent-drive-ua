@@ -4,9 +4,8 @@ export const Wrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  padding-left: 128px;
-  padding-right: 128px;
-  padding-top: 80px;
+  padding-top: 60px;
+  padding-bottom: 20px;
 `;
 
 export const FavoritesList = styled.ul`
