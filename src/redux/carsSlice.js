@@ -11,13 +11,6 @@ export const carsApi = createApi({
       query: (page = 1, limit = 12) => `/advert?page=${page}&limit=${limit}`,
       providesTags: ["Advert"],
     }),
-    toggleFavorite: builder.mutation({
-      query: ({ id, isFavorite }) => ({
-        url: `/favorites/${id}`, // Adjust the endpoint based on your API
-        method: isFavorite ? "DELETE" : "POST",
-      }),
-      invalidatesTags: ["Advert"],
-    }),
   }),
 });
 

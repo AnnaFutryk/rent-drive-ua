@@ -68,3 +68,12 @@ export const InfoItem = styled.li`
   font-weight: 400;
   line-height: 1.5;
 `;
+
+export const HeartBtn = styled.button`
+  display: inline-block;
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  background-color: transparent;
+  border: none;
+`;
