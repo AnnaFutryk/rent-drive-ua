@@ -9,4 +9,5 @@ export const CarsList = styled.ul`
   width: 1184px;
   margin-left: auto;
   margin-right: auto;
+  margin-bottom: 20px;
 `;

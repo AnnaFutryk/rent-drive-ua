@@ -1,10 +1,10 @@
-import { InfinitySpin } from 'react-loader-spinner';
-import { LoderWrapper } from './Loader.styled';
+import { InfinitySpin } from "react-loader-spinner";
+import { LoderWrapper } from "./Loader.styled";
 
 const Loader = () => {
   return (
     <LoderWrapper>
-      <InfinitySpin width="200" color=" #c49dbf" />
+      <InfinitySpin width="200" color=" #3470FF" />
     </LoderWrapper>
   );
 };

@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const MoreBtn = styled.button`
   display: inline-block;
   margin-left: 50%;
-  margin-top: 100px;
+  margin-top: 80px;
   margin-bottom: 150px;
   color: #3470ff;
   font-family: "Manrope";
