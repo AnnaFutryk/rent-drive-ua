@@ -4,6 +4,7 @@ import { useState } from "react";
 import LoadMoreBtn from "../../components/Button/LoadMoreBtn";
 import { CarsList } from "./Catalog.styled";
 import CarItem from "../../components/CarItem/CarItem";
+import Filter from "../../components/Filter/Filter";
 
 const Catalog = () => {
   const [page, setPage] = useState(1);
@@ -27,6 +28,7 @@ const Catalog = () => {
         <Loader />
       ) : (
         <div>
+          <Filter />
           <CarsList>
             {cars.map((car) => (
               <CarItem key={car.id} cars={car} />
