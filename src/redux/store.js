@@ -12,17 +12,19 @@ import persistStore from "redux-persist/es/persistStore";
 import storage from "redux-persist/lib/storage";
 import { carsApi } from "./carsSlice";
 import { favoriteReducer } from "./favoritesSlice";
+import { filterReducer } from "./filterSlice";
 
 const reducers = combineReducers({
   [carsApi.reducerPath]: carsApi.reducer,
   favorites: favoriteReducer,
+  filter: filterReducer,
 });
 
 const persistConfig = {
-  key: "favorites",
+  key: "root",
   version: 1,
   storage,
-  whitelist: ["favorites"],
+  whitelist: ["favorites", "filter"],
 };
 
 const persistedReducer = persistReducer(persistConfig, reducers);
