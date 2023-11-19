@@ -27,6 +27,8 @@ export const Wrapper = styled.div`
   padding-right: 40px;
   padding-top: 40px;
   padding-bottom: 52px;
+  overflow-y: auto;
+  max-height: 80vh;
 `;
 
 export const SvgCloseStyled = styled.button`
@@ -40,7 +42,7 @@ export const SvgCloseStyled = styled.button`
 
 export const CarImg = styled.img`
   width: 100%;
-  height: 150px;
+  height: auto;
   display: block;
   object-fit: cover;
   border-radius: 14px;
@@ -71,30 +73,34 @@ export const Span = styled.span`
 
 export const InfoList = styled.ul`
   display: flex;
-
   flex-wrap: wrap;
-  row-gap: 4px;
 
   :not(:last-child) {
     border-right: 1px solid rgba(18, 20, 23, 0.1);
     margin-right: 6px;
     padding-right: 6px;
+    margin-bottom: 4px;
   }
 `;
 
 export const Item = styled.li`
   font-size: 12px;
+  font-weight: 400;
+  line-height: 1.5;
   color: rgba(18, 20, 23, 0.5);
   display: flex;
   align-items: center;
 `;
 
 export const Description = styled.p`
+  color: #121417;
+  font-weight: 400;
   line-height: 1.43;
   margin-top: 14px;
-  width: 461px;
+  width: 100%;
 `;
-export const Info = styled.h3`
+
+export const InfoHead = styled.h3`
   font-weight: 400;
   font-size: 14px;
   line-height: 1.43;
@@ -107,19 +113,16 @@ export const ConditionList = styled.ul`
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
-
   font-size: 12px;
+  font-weight: 400;
+  line-height: 1.5;
   letter-spacing: -0.24px;
-
-  @media screen and (min-width: 768px) {
-    width: 461px;
-  }
 `;
 
 export const ConditionItem = styled.li`
   border-radius: 35px;
-  color: #363535;
   background-color: #f9f9f9;
+  color: #363535;
   padding: 7px 14px;
 `;
 

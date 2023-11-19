@@ -9,7 +9,6 @@ import {
   Span,
   Item,
   Description,
-  Info,
   ConditionItem,
   ConditionList,
   ConditionSpan,
@@ -18,6 +17,7 @@ import {
   InfoContainer,
   TitleContainer,
   InfoList,
+  InfoHead,
 } from "./Modal.styled";
 import Button from "../Button/Button";
 
@@ -25,6 +25,7 @@ const modalRoot = document.querySelector("#modal-root");
 
 const Modal = ({ cars, onClose }) => {
   useEffect(() => {
+    document.body.style.overflow = "hidden";
     const handleKeyDown = (event) => {
       if (event.code === "Escape") {
         onClose();
@@ -34,6 +35,7 @@ const Modal = ({ cars, onClose }) => {
     window.addEventListener("keydown", handleKeyDown);
 
     return () => {
+      document.body.style.overflow = "auto";
       window.removeEventListener("keydown", handleKeyDown);
     };
   }, [onClose]);
@@ -70,7 +72,7 @@ const Modal = ({ cars, onClose }) => {
               <Item>Engine Size: {cars.engineSize}</Item>
             </InfoList>
             <Description>{cars.description}</Description>
-            <Info>Accessories and functionalities:</Info>
+            <InfoHead>Accessories and functionalities:</InfoHead>
             <InfoList>
               {cars.accessories.map((item) => (
                 <Item key={item}>{item}</Item>
@@ -81,7 +83,7 @@ const Modal = ({ cars, onClose }) => {
                 <Item key={item}>{item}</Item>
               ))}
             </InfoList>
-            <Info>Rental Conditions:</Info>
+            <InfoHead>Rental Conditions:</InfoHead>
             <ConditionList>
               <ConditionItem>
                 Minimum age:{" "}
