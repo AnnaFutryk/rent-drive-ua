@@ -46,6 +46,7 @@ export const CarImg = styled.img`
   display: block;
   object-fit: cover;
   border-radius: 14px;
+  position: relative;
 `;
 
 export const InfoContainer = styled.div`
