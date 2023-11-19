@@ -27,8 +27,6 @@ export const Btn = styled.button`
   color: white;
   background-color: #3470ff;
   display: inline-block;
-  margin-left: 50%;
-  transform: translateX(-50%);
   border-radius: 12px;
   border: none;
   font-size: 14px;
