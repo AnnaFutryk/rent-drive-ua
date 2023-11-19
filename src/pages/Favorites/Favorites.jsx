@@ -4,7 +4,7 @@ import LoadMoreBtn from "../../components/Button/LoadMoreBtn";
 import CarItem from "../../components/CarItem/CarItem";
 
 import { getFavorites } from "../../redux/selectors";
-import { Text, Wrapper, WrapperList } from "./Favorites.styled";
+import { FavoritesList, Text, Wrapper } from "./Favorites.styled";
 
 const Favorites = () => {
   const [page, setPage] = useState(1);
@@ -23,7 +23,7 @@ const Favorites = () => {
   return (
     <>
       <Wrapper>
-        <WrapperList>
+        <FavoritesList>
           {displayedFavorites.map((favorite, id) => (
             <CarItem key={id} cars={favorite} />
           ))}
@@ -33,7 +33,7 @@ const Favorites = () => {
               your personalized collection! 🚘
             </Text>
           )}
-        </WrapperList>
+        </FavoritesList>
         {hasMoreCars && (
           <LoadMoreBtn onClick={handleLoadMore} text="Load more" />
         )}
