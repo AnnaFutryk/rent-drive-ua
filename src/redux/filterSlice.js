@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialFilterState = {
   make: "",
-  pricePerHour: "",
+  rentalPrice: "",
   mileageMin: "",
   mileageMax: "",
   selectedMake: "",
@@ -14,7 +14,7 @@ const filterSlice = createSlice({
   reducers: {
     setFilter(state, action) {
       state.make = action.payload.make;
-      state.pricePerHour = action.payload.pricePerHour;
+      state.rentalPrice = action.payload.rentalPrice;
       state.mileageMin = action.payload.mileageMin;
       state.mileageMax = action.payload.mileageMax;
     },

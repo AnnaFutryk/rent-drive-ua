@@ -18,14 +18,28 @@ const Catalog = () => {
 
   const filter = useSelector(getFilter);
 
-  // useEffect(() => {
-  //   // При зміні фільтра скидаємо значення сторінки до 1
-  //   setPage(1);
-  // }, [filter]);
+  const filteredCars =
+    filter.selectedMake || filter.rentalPrice
+      ? (allCars || []).filter((car) => {
+          const makeCondition =
+            !filter.selectedMake || car.make === filter.selectedMake.value;
 
-  const filteredCars = filter.make
-    ? (allCars || []).filter((car) => car.make === filter.make.value)
-    : cars;
+          const priceCondition =
+            !filter.rentalPrice ||
+            parseFloat(car.rentalPrice.replace("$", "")) ===
+              parseFloat(filter.rentalPrice.value);
+
+          return makeCondition && priceCondition;
+        })
+      : cars;
+
+  if (isLoading) {
+    return <Loader />;
+  }
+
+  if (error) {
+    return <p>Ooops... something went wrong</p>;
+  }
 
   if (!filteredCars || filteredCars.length === 0) {
     return <p>No cars found.</p>;
@@ -33,7 +47,6 @@ const Catalog = () => {
 
   const handleLoadMore = () => {
     setPage((prevPage) => prevPage + 1);
-    // Викликаємо refetch для оновлення даних
   };
 
   const hasMoreCars = cars ? cars.length > 0 : false;
@@ -47,6 +60,14 @@ const Catalog = () => {
 
   const makes = allCars ? [...new Set(allCars.map((car) => car.make))] : [];
 
+  const prices = allCars
+    ? [
+        ...new Set(
+          allCars.map((car) => parseFloat(car.rentalPrice.replace("$", "")))
+        ),
+      ]
+    : [];
+
   return (
     <>
       {error && <p>Ooops... something went wrong</p>}
@@ -56,6 +77,7 @@ const Catalog = () => {
         <div>
           <Filter
             makes={makes}
+            prices={prices}
             onFilterChange={(newFilters) => {
               dispatch(setFilter(newFilters));
             }}
