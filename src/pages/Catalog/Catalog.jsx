@@ -1,6 +1,8 @@
 import { useGetAllCarsQuery, useGetCarsQuery } from "../../redux/carsSlice";
+import { ToastContainer, toast, Slide } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import Loader from "../../components/Loader/Loader";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import LoadMoreBtn from "../../components/Button/LoadMoreBtn";
 import { CarsList } from "./Catalog.styled";
 import CarItem from "../../components/CarItem/CarItem";
@@ -18,20 +20,39 @@ const Catalog = () => {
 
   const filter = useSelector(getFilter);
 
+  const itemsPerPage = 12;
+
+  // Calculate filtered cars based on the price condition
   const filteredCars =
-    filter.selectedMake || filter.rentalPrice
-      ? (allCars || []).filter((car) => {
-          const makeCondition =
-            !filter.selectedMake || car.make === filter.selectedMake.value;
+    (allCars || []).filter((car) => {
+      const makeCondition =
+        !filter.selectedMake || car.make === filter.selectedMake.value;
 
-          const priceCondition =
-            !filter.rentalPrice ||
-            parseFloat(car.rentalPrice.replace("$", "")) ===
-              parseFloat(filter.rentalPrice.value);
+      const priceCondition =
+        !filter.rentalPrice ||
+        (parseFloat(car.rentalPrice.replace("$", "")) >=
+          parseFloat(filter.rentalPrice) &&
+          parseFloat(car.rentalPrice.replace("$", "")) <
+            parseFloat(filter.rentalPrice) + 10);
 
-          return makeCondition && priceCondition;
-        })
-      : cars;
+      return makeCondition && priceCondition;
+    }) || [];
+
+  const totalFilteredCars = filteredCars.length;
+
+  // Slice the filtered cars based on the current page and itemsPerPage
+  const slicedFilteredCars = filteredCars.slice(
+    (page - 1) * itemsPerPage,
+    page * itemsPerPage
+  );
+  useEffect(() => {
+    if (!slicedFilteredCars || slicedFilteredCars.length === 0) {
+      toast.error(`No cars found`, {
+        position: toast.POSITION.TOP_RIGHT,
+        autoClose: 1500,
+      });
+    }
+  }, [slicedFilteredCars]);
 
   if (isLoading) {
     return <Loader />;
@@ -41,28 +62,15 @@ const Catalog = () => {
     return <p>Ooops... something went wrong</p>;
   }
 
-  if (!filteredCars || filteredCars.length === 0) {
-    return <p>No cars found.</p>;
-  }
-
-  const handleLoadMore = () => {
-    setPage((prevPage) => prevPage + 1);
-  };
-
   const hasMoreCars = cars ? cars.length > 0 : false;
-  const itemsPerPage = 12;
-  // const hasMoreFilteredCars = filteredCars.length > page * itemsPerPage;
-
   const isLastPage =
-    !isFetching && (!hasMoreCars || (cars && cars.length < itemsPerPage));
-
+    !isFetching && (!hasMoreCars || slicedFilteredCars.length < itemsPerPage);
   const showLoadMoreButton =
     filter.selectedMake || filter.rentalPrice
-      ? filteredCars.length > itemsPerPage
+      ? totalFilteredCars > page * itemsPerPage
       : hasMoreCars;
 
   const makes = allCars ? [...new Set(allCars.map((car) => car.make))] : [];
-
   const prices = allCars
     ? [
         ...new Set(
@@ -71,6 +79,10 @@ const Catalog = () => {
       ]
     : [];
 
+  const handleLoadMore = () => {
+    setPage((prevPage) => prevPage + 1);
+  };
+
   return (
     <>
       {error && <p>Ooops... something went wrong</p>}
@@ -78,16 +90,18 @@ const Catalog = () => {
         <Loader />
       ) : (
         <div>
+          <ToastContainer transition={Slide} />
           <Filter
             makes={makes}
             prices={prices}
             onFilterChange={(newFilters) => {
+              setPage(1);
               dispatch(setFilter(newFilters));
             }}
             filter={filter}
           />
           <CarsList>
-            {filteredCars.map((car) => (
+            {slicedFilteredCars.map((car) => (
               <CarItem key={car.id} cars={car} />
             ))}
           </CarsList>

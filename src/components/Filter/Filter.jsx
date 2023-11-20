@@ -40,14 +40,22 @@ const Filter = ({ makes, prices, onFilterChange }) => {
   const handleFilterClick = () => {
     const newFilters = {
       make: selectedMake,
-      rentalPrice: prices
-        .filter((price) => price <= selectedPriceStep)
-        .map((price) => ({
-          value: price,
-          label: `${price}`,
-        })),
+      rentalPrice: selectedPriceStep,
     };
 
+    onFilterChange(newFilters);
+  };
+
+  const handleResetClick = () => {
+    const newFilters = {
+      make: null,
+      rentalPrice: null,
+    };
+
+    setSelectedPriceStep(null);
+    setSelectedPriceLabel("");
+
+    dispatch(selectMake(null));
     onFilterChange(newFilters);
   };
 
@@ -152,6 +160,12 @@ const Filter = ({ makes, prices, onFilterChange }) => {
         width="136px"
         height="48px"
         onClick={handleFilterClick}
+      />
+      <Button
+        text="Reset"
+        width="80px"
+        height="48px"
+        onClick={handleResetClick}
       />
     </Wrapper>
   );
