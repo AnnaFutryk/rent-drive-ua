@@ -2,7 +2,7 @@ import { useGetAllCarsQuery, useGetCarsQuery } from "../../redux/carsSlice";
 import { ToastContainer, toast, Slide } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Loader from "../../components/Loader/Loader";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import LoadMoreBtn from "../../components/Button/LoadMoreBtn";
 import { CarsList } from "./Catalog.styled";
 import CarItem from "../../components/CarItem/CarItem";
@@ -45,14 +45,6 @@ const Catalog = () => {
     (page - 1) * itemsPerPage,
     page * itemsPerPage
   );
-  useEffect(() => {
-    if (!slicedFilteredCars || slicedFilteredCars.length === 0) {
-      toast.error(`No cars found`, {
-        position: toast.POSITION.TOP_RIGHT,
-        autoClose: 1500,
-      });
-    }
-  }, [slicedFilteredCars]);
 
   if (isLoading) {
     return <Loader />;
@@ -60,6 +52,13 @@ const Catalog = () => {
 
   if (error) {
     return <p>Ooops... something went wrong</p>;
+  }
+
+  if (!slicedFilteredCars || slicedFilteredCars.length === 0) {
+    toast.error(`No cars found`, {
+      position: toast.POSITION.TOP_RIGHT,
+      autoClose: 1500,
+    });
   }
 
   const hasMoreCars = cars ? cars.length > 0 : false;
