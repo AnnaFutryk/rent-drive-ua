@@ -11,7 +11,11 @@ export const carsApi = createApi({
       query: (page = 1, limit = 12) => `/advert?page=${page}&limit=${limit}`,
       providesTags: ["Advert"],
     }),
+    getAllCars: builder.query({
+      query: () => "/advert",
+      providesTags: ["Advert"],
+    }),
   }),
 });
 
-export const { useGetCarsQuery, useToggleFavoriteMutation } = carsApi;
+export const { useGetCarsQuery, useGetAllCarsQuery } = carsApi;

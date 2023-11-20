@@ -11,3 +11,7 @@ export const CarsList = styled.ul`
   margin-right: auto;
   margin-bottom: 20px;
 `;
+
+export const ErrorText = styled.p`
+  margin-top: 200px;
+`;

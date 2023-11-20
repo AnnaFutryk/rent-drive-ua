@@ -1,4 +1,7 @@
+import { useDispatch, useSelector } from "react-redux";
 import Select from "react-select";
+import { selectMake } from "../../redux/filterSlice";
+import { getSelectedMake } from "../../redux/selectors";
 import Button from "../Button/Button";
 
 import {
@@ -13,7 +16,21 @@ import {
   Wrapper,
 } from "./Filter.styled";
 
-const Filter = () => {
+const Filter = ({ makes, onFilterChange }) => {
+  const dispatch = useDispatch();
+  const selectedMake = useSelector(getSelectedMake);
+
+  const makeOptions = makes.map((make) => ({ value: make, label: make }));
+  console.log(makeOptions);
+
+  const handleFilterClick = () => {
+    const newFilters = {
+      make: selectedMake,
+    };
+
+    onFilterChange(newFilters);
+  };
+
   return (
     <Wrapper>
       <SelectWrapper>
@@ -21,7 +38,10 @@ const Filter = () => {
         <Select
           inputId="selectTitle"
           placeholder="Enter the text"
+          value={selectedMake}
           isClearable={true}
+          onChange={(selectedOption) => dispatch(selectMake(selectedOption))}
+          options={makeOptions}
           styles={{
             control: (styles) => ({
               ...styles,
@@ -100,7 +120,12 @@ const Filter = () => {
           <SpanTo>To</SpanTo>
         </InputWrap>
       </CarMileageWrap>
-      <Button text="Search" width="136px" height="48px" />
+      <Button
+        text="Search"
+        width="136px"
+        height="48px"
+        onClick={handleFilterClick}
+      />
     </Wrapper>
   );
 };
