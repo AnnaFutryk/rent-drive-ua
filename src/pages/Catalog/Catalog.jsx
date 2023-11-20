@@ -51,12 +51,15 @@ const Catalog = () => {
 
   const hasMoreCars = cars ? cars.length > 0 : false;
   const itemsPerPage = 12;
-  const hasMoreFilteredCars = filteredCars.length > page * itemsPerPage;
+  // const hasMoreFilteredCars = filteredCars.length > page * itemsPerPage;
 
   const isLastPage =
     !isFetching && (!hasMoreCars || (cars && cars.length < itemsPerPage));
 
-  const showLoadMoreButton = filter.make ? hasMoreFilteredCars : hasMoreCars;
+  const showLoadMoreButton =
+    filter.selectedMake || filter.rentalPrice
+      ? filteredCars.length > itemsPerPage
+      : hasMoreCars;
 
   const makes = allCars ? [...new Set(allCars.map((car) => car.make))] : [];
 
