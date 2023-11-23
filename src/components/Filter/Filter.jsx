@@ -23,6 +23,8 @@ const Filter = ({ makes, prices, onFilterChange }) => {
 
   const [selectedPriceStep, setSelectedPriceStep] = useState(null);
   const [selectedPriceLabel, setSelectedPriceLabel] = useState("");
+  const [minValue, setMinValue] = useState("");
+  const [maxValue, setMaxValue] = useState("");
 
   const makeOptions = makes.map((make) => ({ value: make, label: make }));
 
@@ -37,10 +39,20 @@ const Filter = ({ makes, prices, onFilterChange }) => {
     setSelectedPriceLabel(selectedOption.label);
   };
 
+  const handleMinValueChange = (e) => {
+    setMinValue(e.target.value);
+  };
+
+  const handleMaxValueChange = (e) => {
+    setMaxValue(e.target.value);
+  };
+
   const handleFilterClick = () => {
     const newFilters = {
       make: selectedMake,
       rentalPrice: selectedPriceStep,
+      mileageMin: minValue,
+      mileageMax: maxValue,
     };
 
     onFilterChange(newFilters);
@@ -50,10 +62,14 @@ const Filter = ({ makes, prices, onFilterChange }) => {
     const newFilters = {
       make: null,
       rentalPrice: null,
+      mileageMin: null,
+      mileageMax: null,
     };
 
     setSelectedPriceStep(null);
     setSelectedPriceLabel("");
+    setMinValue("");
+    setMaxValue("");
 
     dispatch(selectMake(null));
     onFilterChange(newFilters);
@@ -149,9 +165,18 @@ const Filter = ({ makes, prices, onFilterChange }) => {
       <CarMileageWrap>
         <Label htmlFor="mileage">Car mileage / km</Label>
         <InputWrap>
-          <InputFrom type="text" id="mileage" />
+          <InputFrom
+            type="text"
+            id="mileage"
+            value={minValue}
+            onChange={handleMinValueChange}
+          />
           <SpanFrom>From</SpanFrom>
-          <InputTo type="text" />
+          <InputTo
+            type="text"
+            value={maxValue}
+            onChange={handleMaxValueChange}
+          />
           <SpanTo>To</SpanTo>
         </InputWrap>
       </CarMileageWrap>

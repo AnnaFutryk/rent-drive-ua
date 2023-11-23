@@ -35,7 +35,20 @@ const Catalog = () => {
           parseFloat(car.rentalPrice.replace("$", "")) <
             parseFloat(filter.rentalPrice) + 10);
 
-      return makeCondition && priceCondition;
+      const mileageMinCondition =
+        !filter.mileageMin ||
+        parseFloat(car.mileage) >= parseFloat(filter.mileageMin);
+
+      const mileageMaxCondition =
+        !filter.mileageMax ||
+        parseFloat(car.mileage) <= parseFloat(filter.mileageMax);
+
+      return (
+        makeCondition &&
+        priceCondition &&
+        mileageMinCondition &&
+        mileageMaxCondition
+      );
     }) || [];
 
   const totalFilteredCars = filteredCars.length;
