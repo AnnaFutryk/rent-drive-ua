@@ -1,10 +1,10 @@
 {
   "files": {
     "main.css": "/rent-drive-ua/static/css/main.6b487bb9.css",
-    "main.js": "/rent-drive-ua/static/js/main.ac344e53.js",
+    "main.js": "/rent-drive-ua/static/js/main.dd41c97e.js",
     "static/js/861.f428346c.chunk.js": "/rent-drive-ua/static/js/861.f428346c.chunk.js",
     "static/css/987.b91cd9e6.chunk.css": "/rent-drive-ua/static/css/987.b91cd9e6.chunk.css",
-    "static/js/987.c1f7643d.chunk.js": "/rent-drive-ua/static/js/987.c1f7643d.chunk.js",
+    "static/js/987.37dd4368.chunk.js": "/rent-drive-ua/static/js/987.37dd4368.chunk.js",
     "static/js/786.f5158c4d.chunk.js": "/rent-drive-ua/static/js/786.f5158c4d.chunk.js",
     "static/js/690.b66bc4f3.chunk.js": "/rent-drive-ua/static/js/690.b66bc4f3.chunk.js",
     "static/media/IMG_1236.MP4": "/rent-drive-ua/static/media/IMG_1236.977c958fa73a3cbae4f2.MP4",
@@ -13,15 +13,15 @@
     "static/media/heart-color.svg": "/rent-drive-ua/static/media/heart-color.623a3b874365d724c658e79a860ad4a4.svg",
     "static/media/x.svg": "/rent-drive-ua/static/media/x.f3cbdd58dc25ca7cbb3d242106b56fb9.svg",
     "main.6b487bb9.css.map": "/rent-drive-ua/static/css/main.6b487bb9.css.map",
-    "main.ac344e53.js.map": "/rent-drive-ua/static/js/main.ac344e53.js.map",
+    "main.dd41c97e.js.map": "/rent-drive-ua/static/js/main.dd41c97e.js.map",
     "861.f428346c.chunk.js.map": "/rent-drive-ua/static/js/861.f428346c.chunk.js.map",
     "987.b91cd9e6.chunk.css.map": "/rent-drive-ua/static/css/987.b91cd9e6.chunk.css.map",
-    "987.c1f7643d.chunk.js.map": "/rent-drive-ua/static/js/987.c1f7643d.chunk.js.map",
+    "987.37dd4368.chunk.js.map": "/rent-drive-ua/static/js/987.37dd4368.chunk.js.map",
     "786.f5158c4d.chunk.js.map": "/rent-drive-ua/static/js/786.f5158c4d.chunk.js.map",
     "690.b66bc4f3.chunk.js.map": "/rent-drive-ua/static/js/690.b66bc4f3.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.6b487bb9.css",
-    "static/js/main.ac344e53.js"
+    "static/js/main.dd41c97e.js"
   ]
 }
