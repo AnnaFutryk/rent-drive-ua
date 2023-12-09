@@ -39,12 +39,21 @@ const Filter = ({ makes, prices, onFilterChange }) => {
     setSelectedPriceLabel(selectedOption.label);
   };
 
+  const formattedMileageValue = (value) => {
+    const formattedValue = value.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    return formattedValue;
+  };
+
   const handleMinValueChange = (e) => {
-    setMinValue(e.target.value);
+    const rawValue = e.target.value.replace(/[^\d]/g, "");
+    const formattedValue = formattedMileageValue(rawValue);
+    setMinValue(formattedValue);
   };
 
   const handleMaxValueChange = (e) => {
-    setMaxValue(e.target.value);
+    const rawValue = e.target.value.replace(/[^\d]/g, "");
+    const formattedValue = formattedMileageValue(rawValue);
+    setMaxValue(formattedValue);
   };
 
   const handleFilterClick = () => {
@@ -168,13 +177,13 @@ const Filter = ({ makes, prices, onFilterChange }) => {
           <InputFrom
             type="text"
             id="mileage"
-            value={minValue}
+            value={formattedMileageValue(minValue)}
             onChange={handleMinValueChange}
           />
           <SpanFrom>From</SpanFrom>
           <InputTo
             type="text"
-            value={maxValue}
+            value={formattedMileageValue(maxValue)}
             onChange={handleMaxValueChange}
           />
           <SpanTo>To</SpanTo>
