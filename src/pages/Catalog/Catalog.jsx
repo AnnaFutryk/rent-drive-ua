@@ -29,10 +29,10 @@ const Catalog = () => {
 
       const priceCondition =
         !filter.rentalPrice ||
-        (parseFloat(car.rentalPrice.replace("$", "")) >=
+        (parseFloat(car.rentalPrice.replace("$", "")) <=
           parseFloat(filter.rentalPrice) &&
-          parseFloat(car.rentalPrice.replace("$", "")) <
-            parseFloat(filter.rentalPrice) + 10);
+          parseFloat(car.rentalPrice.replace("$", "")) >
+            parseFloat(filter.rentalPrice) - 10);
 
       const mileageMinCondition =
         !filter.mileageMin ||
