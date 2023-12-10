@@ -17,7 +17,7 @@ import {
   Wrapper,
 } from "./Filter.styled";
 
-const Filter = ({ makes, prices, onFilterChange }) => {
+const Filter = ({ makes, onFilterChange }) => {
   const dispatch = useDispatch();
   const selectedMake = useSelector(getSelectedMake);
 
@@ -46,14 +46,12 @@ const Filter = ({ makes, prices, onFilterChange }) => {
 
   const handleMinValueChange = (e) => {
     const rawValue = e.target.value.replace(/[^\d]/g, "");
-    const formattedValue = formattedMileageValue(rawValue);
-    setMinValue(formattedValue);
+    setMinValue(rawValue);
   };
 
   const handleMaxValueChange = (e) => {
     const rawValue = e.target.value.replace(/[^\d]/g, "");
-    const formattedValue = formattedMileageValue(rawValue);
-    setMaxValue(formattedValue);
+    setMaxValue(rawValue);
   };
 
   const handleFilterClick = () => {

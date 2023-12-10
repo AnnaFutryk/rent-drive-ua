@@ -22,7 +22,6 @@ const Catalog = () => {
 
   const itemsPerPage = 12;
 
-  // Calculate filtered cars based on the price condition
   const filteredCars =
     (allCars || []).filter((car) => {
       const makeCondition =
@@ -75,10 +74,15 @@ const Catalog = () => {
   }
 
   const hasMoreCars = cars ? cars.length > 0 : false;
+
   const isLastPage =
     !isFetching && (!hasMoreCars || slicedFilteredCars.length < itemsPerPage);
+
   const showLoadMoreButton =
-    filter.selectedMake || filter.rentalPrice
+    filter.selectedMake ||
+    filter.rentalPrice ||
+    filter.mileageMin ||
+    filter.mileageMax
       ? totalFilteredCars > page * itemsPerPage
       : hasMoreCars;
 
