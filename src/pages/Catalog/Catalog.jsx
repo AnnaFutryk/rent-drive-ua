@@ -66,7 +66,13 @@ const Catalog = () => {
     return <p>Ooops... something went wrong</p>;
   }
 
-  if (!slicedFilteredCars || slicedFilteredCars.length === 0) {
+  if (
+    (filter.selectedMake ||
+      filter.rentalPrice ||
+      filter.mileageMin ||
+      filter.mileageMax) &&
+    (!slicedFilteredCars || slicedFilteredCars.length === 0)
+  ) {
     toast.error(`No cars found`, {
       position: toast.POSITION.TOP_RIGHT,
       autoClose: 1500,
