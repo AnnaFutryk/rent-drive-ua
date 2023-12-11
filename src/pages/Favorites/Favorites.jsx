@@ -13,6 +13,8 @@ const Favorites = () => {
 
   const handleLoadMore = () => {
     setPage((prevPage) => prevPage + 1);
+
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   const startIndex = (page - 1) * itemsPerPage;
