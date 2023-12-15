@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/rent-drive-ua/static/css/main.6b487bb9.css",
-    "main.js": "/rent-drive-ua/static/js/main.de2378d0.js",
+    "main.js": "/rent-drive-ua/static/js/main.6e743a64.js",
     "static/js/861.f428346c.chunk.js": "/rent-drive-ua/static/js/861.f428346c.chunk.js",
     "static/css/987.b91cd9e6.chunk.css": "/rent-drive-ua/static/css/987.b91cd9e6.chunk.css",
     "static/js/987.3f6a0f05.chunk.js": "/rent-drive-ua/static/js/987.3f6a0f05.chunk.js",
@@ -13,7 +13,7 @@
     "static/media/heart-color.svg": "/rent-drive-ua/static/media/heart-color.623a3b874365d724c658e79a860ad4a4.svg",
     "static/media/x.svg": "/rent-drive-ua/static/media/x.f3cbdd58dc25ca7cbb3d242106b56fb9.svg",
     "main.6b487bb9.css.map": "/rent-drive-ua/static/css/main.6b487bb9.css.map",
-    "main.de2378d0.js.map": "/rent-drive-ua/static/js/main.de2378d0.js.map",
+    "main.6e743a64.js.map": "/rent-drive-ua/static/js/main.6e743a64.js.map",
     "861.f428346c.chunk.js.map": "/rent-drive-ua/static/js/861.f428346c.chunk.js.map",
     "987.b91cd9e6.chunk.css.map": "/rent-drive-ua/static/css/987.b91cd9e6.chunk.css.map",
     "987.3f6a0f05.chunk.js.map": "/rent-drive-ua/static/js/987.3f6a0f05.chunk.js.map",
@@ -22,6 +22,6 @@
   },
   "entrypoints": [
     "static/css/main.6b487bb9.css",
-    "static/js/main.de2378d0.js"
+    "static/js/main.6e743a64.js"
   ]
 }
