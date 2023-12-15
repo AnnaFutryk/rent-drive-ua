@@ -14,11 +14,11 @@ const Favorites = () => {
   const handleLoadMore = () => {
     setPage((prevPage) => prevPage + 1);
 
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    // window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
-  const startIndex = (page - 1) * itemsPerPage;
-  const endIndex = startIndex + itemsPerPage;
+  const startIndex = 0;
+  const endIndex = page * itemsPerPage;
   const displayedFavorites = favoriteCars.favorites.slice(startIndex, endIndex);
   const hasMoreCars = favoriteCars.favorites.length > endIndex;
 

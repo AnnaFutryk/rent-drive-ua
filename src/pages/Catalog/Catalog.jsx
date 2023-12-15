@@ -52,6 +52,8 @@ const Catalog = () => {
 
   const totalFilteredCars = filteredCars.length;
 
+  const allFilteredCars = filteredCars.slice(0, page * itemsPerPage);
+
   // Slice the filtered cars based on the current page and itemsPerPage
   const slicedFilteredCars = filteredCars.slice(
     (page - 1) * itemsPerPage,
@@ -104,7 +106,7 @@ const Catalog = () => {
   const handleLoadMore = () => {
     setPage((prevPage) => prevPage + 1);
 
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    // window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   return (
@@ -125,7 +127,7 @@ const Catalog = () => {
             filter={filter}
           />
           <CarsList>
-            {slicedFilteredCars.map((car) => (
+            {allFilteredCars.map((car) => (
               <CarItem key={car.id} cars={car} />
             ))}
           </CarsList>
